@@ -1,0 +1,81 @@
+### Data set:discrete_filtered_dataset(|I|=26; |A|=7; |D|=569; |D+|=212; |D-|=357)
+SSDP+ running...
+
+### Top-k subgroups:
+{} -> 0.0(212p,357n)(conf=0.37258347978910367)
+{radius3 = ≥ 0.405014} -> 0.16364231640006052(149p,1n)(conf=0.9933333333333333)
+{texture3 = ≥ 0.589132,concave_points1 = 0.064507 - 0.776034} -> 0.033079957128869755(30p,0n)(conf=1.0)
+{area3 = 0.00697341 - 0.586118,concavity3 = ≥ 0.451502} -> 0.02866929617835379(26p,0n)(conf=1.0)
+{texture3 = -0.378974 - 0.589132,concavity1 = 0.00779267 - 0.38168} -> 0.016160068692646738(20p,9n)(conf=0.6896551724137931)
+{texture3 = < -0.378974,area3 = ≥ 0.586118} -> 0.014334648089176895(13p,0n)(conf=1.0)
+{concave_points1 = ≥ 0.776034,concavity1 = 0.00779267 - 0.38168} -> 0.004858522181485726(5p,1n)(conf=0.8333333333333334)  
+{area2 = ≥ 0.295767,concavity1 = -0.245755 - 0.00779267} -> 0.0044106609505159666(4p,0n)(conf=1.0)
+{area2 = -0.199161 - 0.295767,concavity1 = -0.245755 - 0.00779267} -> 0.0035489141681672594(5p,3n)(conf=0.625)
+{} -> 0.0(212p,357n)(conf=0.37258347978910367)
+{} -> 0.0(212p,357n)(conf=0.37258347978910367)
+### Data set:discrete_filtered_dataset(|I|=26; |A|=7; |D+|=212; |D-|=357)
+Average WRAcc: 0.02687043837892767
+Time(s): 0.038
+Average size: 1.5
+Coverage of all Pk DPs in relation to D+: 100.0%
+Description Redundancy Item Dominador (|itemDominador|/k): 0.2
+Number of individuals generated: 731
+
+### Top-k and caches
+{} -> 0.0(212p,357n)(conf=0.37258347978910367)
+{radius3=≥ 0.405014}->1 (1=149, others=1)
+        [Qualidade=0,1636|Size=1]
+   cache(0):{concavity1=≥ 0.38168}->1 (1=143, others=12)
+        [Qualidade=0,1498|Size=1] ||Similarity:0,5561||
+   cache(1):{area3=≥ 0.586118}->1 (1=128, others=0)
+        [Qualidade=0,1411|Size=1] ||Similarity:0,8533||
+   cache(2):{area3=≥ 0.586118,radius3=≥ 0.405014}->1 (1=128, others=0)
+        [Qualidade=0,1411|Size=2] ||Similarity:0,8533||
+   cache(3):{concave_points1=≥ 0.776034}->1 (1=128, others=1)
+        [Qualidade=0,1405|Size=1] ||Similarity:0,6221||
+   cache(4):{concavity3=≥ 0.451502}->1 (1=138, others=19)
+        [Qualidade=0,1397|Size=1] ||Similarity:0,4831||
+
+{texture3=≥ 0.589132,concave_points1=0.064507 - 0.776034}->1 (1=30, others=0)
+        [Qualidade=0,0331|Size=2]
+   cache(0):{concavity3=≥ 0.451502,area2=-0.480123 - -0.199161}->1 (1=22, others=7)
+        [Qualidade=0,0197|Size=2] ||Similarity:0,1132||
+   cache(1):{area3=-0.324393 - 0.00697341,concavity3=≥ 0.451502}->1 (1=21, others=6)
+        [Qualidade=0,0192|Size=2] ||Similarity:0,1633||
+   cache(2):{concavity3=≥ 0.451502,radius3=-0.2825 - 0.108886}->1 (1=19, others=6)
+        [Qualidade=0,017|Size=2] ||Similarity:0,1224||
+   cache(3):{concavity3=≥ 0.451502,concavity1=0.00779267 - 0.38168}->1 (1=19, others=6)
+        [Qualidade=0,017|Size=2] ||Similarity:0,25||
+   cache(4):{texture3=≥ 0.589132,concavity1=0.00779267 - 0.38168}->1 (1=17, others=4)
+        [Qualidade=0,0161|Size=2] ||Similarity:0,4167||
+
+{area3=0.00697341 - 0.586118,concavity3=≥ 0.451502}->1 (1=26, others=0)
+        [Qualidade=0,0287|Size=2]
+   cache(0):{radius3=0.108886 - 0.405014}->1 (1=30, others=10)
+        [Qualidade=0,0265|Size=1] ||Similarity:0,2453||
+   cache(1):{texture3=< -0.378974,concave_points1=≥ 0.776034}->1 (1=17, others=1)
+        [Qualidade=0,0181|Size=2] ||Similarity:0,1||
+   cache(2):{texture3=≥ 0.589132,radius3=0.108886 - 0.405014}->1 (1=16, others=0)
+        [Qualidade=0,0176|Size=2] ||Similarity:0,1667||
+   cache(3):{area2=-0.199161 - 0.295767,radius3=0.108886 - 0.405014}->1 (1=17, others=2)
+        [Qualidade=0,0174|Size=2] ||Similarity:0,25||
+   cache(4):{texture3=-0.378974 - 0.589132,area3=0.00697341 - 0.586118}->1 (1=16, others=2)
+        [Qualidade=0,0163|Size=2] ||Similarity:0,2571||
+
+{texture3=-0.378974 - 0.589132,concavity1=0.00779267 - 0.38168}->1 (1=20, others=9)
+        [Qualidade=0,0162|Size=2]
+   cache(0):{area3=-0.324393 - 0.00697341,concavity1=0.00779267 - 0.38168}->1 (1=9, others=9)
+        [Qualidade=0,004|Size=2] ||Similarity:0,2051||
+   cache(1): ||Similarity:0,051||
+   cache(2): ||Similarity:0,051||
+   cache(3): ||Similarity:0,051||
+   cache(4): ||Similarity:0,051||
+
+{texture3=< -0.378974,area3=≥ 0.586118}->1 (1=13, others=0)
+        [Qualidade=0,0143|Size=2]
+{concave_points1=≥ 0.776034,concavity1=0.00779267 - 0.38168}->1 (1=5, others=1)
+        [Qualidade=0,0049|Size=2]
+{area2=≥ 0.295767,concavity1=-0.245755 - 0.00779267}->1 (1=4, others=0)
+        [Qualidade=0,0044|Size=2]
+{area2=-0.199161 - 0.295767,concavity1=-0.245755 - 0.00779267}->1 (1=5, others=3)
+        [Qualidade=0,0035|Size=2]

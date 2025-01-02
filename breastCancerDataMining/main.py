@@ -1,3 +1,4 @@
+import pandas as pd
 from ucimlrepo import fetch_ucirepo
 
 
@@ -14,3 +15,7 @@ if __name__ == "__main__":
 
     # variable information
     print(breast_cancer_wisconsin_diagnostic.variables)
+
+    dataset = pd.concat([X, y], axis=1)
+
+    print(dataset)

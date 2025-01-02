@@ -1,0 +1,112 @@
+### Data set:discrete_filtered_dataset(|I|=26; |A|=7; |D|=569; |D+|=357; |D-|=212)
+SSDP+ running...
+
+### Top-k subgroups:
+{} -> 0.0(357p,212n)(conf=0.6274165202108963)
+{area3 = < -0.324393} -> 0.18000315047210746(285p,6n)(conf=0.979381443298969)
+{texture3 = < -0.378974,radius3 = -0.2825 - 0.108886} -> 0.018955340513526955(34p,3n)(conf=0.918918918918919)   
+{concavity3 = -0.267647 - 0.451502,area2 = < -0.480123} -> 0.017679708179799296(27p,0n)(conf=1.0)
+{texture3 = ≥ 0.589132,concavity3 = < -0.267647} -> 0.017404814044928205(35p,5n)(conf=0.875)
+{area3 = < -0.324393,area2 = -0.199161 - 0.295767} -> 0.011338610888896438(19p,1n)(conf=0.95)
+{area3 = < -0.324393,concavity1 = 0.00779267 - 0.38168} -> 0.010029002875577972(17p,1n)(conf=0.9444444444444444)
+{area3 = -0.324393 - 0.00697341,area2 = < -0.480123} -> 0.004790570822304108(9p,1n)(conf=0.9)
+{area3 = < -0.324393,concavity1 = ≥ 0.38168} -> 0.002585240347046123(9p,3n)(conf=0.75)
+{} -> 0.0(357p,212n)(conf=0.6274165202108963)
+{} -> 0.0(357p,212n)(conf=0.6274165202108963)
+### Data set:discrete_filtered_dataset(|I|=26; |A|=7; |D+|=357; |D-|=212)
+Average WRAcc: 0.02627864381441865
+Time(s): 0.04
+Average size: 1.5
+Coverage of all Pk DPs in relation to D+: 100.0%
+Description Redundancy Item Dominador (|itemDominador|/k): 0.4
+Number of individuals generated: 903
+
+### Top-k and caches
+{} -> 0.0(357p,212n)(conf=0.6274165202108963)
+{area3=< -0.324393}->0 (0=285, others=6)
+        [Qualidade=0,18|Size=1]
+   cache(0):{concavity1=< -0.245755}->0 (0=293, others=15)
+        [Qualidade=0,1753|Size=1] ||Similarity:0,6779||
+   cache(1):{radius3=< -0.2825}->0 (0=274, others=5)
+        [Qualidade=0,1739|Size=1] ||Similarity:0,9588||
+   cache(2):{area3=< -0.324393,radius3=< -0.2825}->0 (0=274, others=5)
+        [Qualidade=0,1739|Size=2] ||Similarity:0,9588||
+   cache(3):{concavity3=< -0.267647}->0 (0=267, others=8)
+        [Qualidade=0,166|Size=1] ||Similarity:0,6453||
+   cache(4):{area3=< -0.324393,concavity1=< -0.245755}->0 (0=240, others=2)
+        [Qualidade=0,1549|Size=2] ||Similarity:0,8316||
+
+{texture3=< -0.378974,radius3=-0.2825 - 0.108886}->0 (0=34, others=3)
+        [Qualidade=0,019|Size=2]
+   cache(0):{concave_points1=-0.570412 - 0.064507,radius3=-0.2825 - 0.108886}->0 (0=34, others=4)
+        [Qualidade=0,0179|Size=2] ||Similarity:0,1905||
+   cache(1):{texture3=< -0.378974,area3=-0.324393 - 0.00697341}->0 (0=32, others=3)
+        [Qualidade=0,0176|Size=2] ||Similarity:0,8||
+   cache(2):{concave_points1=< -0.570412,radius3=-0.2825 - 0.108886}->0 (0=27, others=1)
+        [Qualidade=0,0166|Size=2] ||Similarity:0,2745||
+   cache(3):{radius3=-0.2825 - 0.108886}->0 (0=72, others=28)
+        [Qualidade=0,0163|Size=1] ||Similarity:0,37||
+   cache(4):{texture3=< -0.378974,concavity3=-0.267647 - 0.451502}->0 (0=36, others=9)
+        [Qualidade=0,0136|Size=2] ||Similarity:0,1549||
+
+{concavity3=-0.267647 - 0.451502,area2=< -0.480123}->0 (0=27, others=0)
+        [Qualidade=0,0177|Size=2]
+   cache(0):{concavity3=-0.267647 - 0.451502,concave_points1=-0.570412 - 0.064507}->0 (0=42, others=10)
+        [Qualidade=0,0165|Size=2] ||Similarity:0,197||
+   cache(1):{concavity3=-0.267647 - 0.451502,concavity1=< -0.245755}->0 (0=34, others=7)
+        [Qualidade=0,0145|Size=2] ||Similarity:0,3077||
+   cache(2): ||Similarity:0,0475||
+   cache(3): ||Similarity:0,0475||
+   cache(4): ||Similarity:0,0475||
+
+{texture3=≥ 0.589132,concavity3=< -0.267647}->0 (0=35, others=5)
+        [Qualidade=0,0174|Size=2]
+   cache(0):{area2=-0.199161 - 0.295767,concavity1=< -0.245755}->0 (0=24, others=7)
+        [Qualidade=0,008|Size=2] ||Similarity:0,1094||
+   cache(1): ||Similarity:0,0703||
+   cache(2): ||Similarity:0,0703||
+   cache(3): ||Similarity:0,0703||
+   cache(4): ||Similarity:0,0703||
+
+{area3=< -0.324393,area2=-0.199161 - 0.295767}->0 (0=19, others=1)
+        [Qualidade=0,0113|Size=2]
+   cache(0):{area2=-0.199161 - 0.295767,radius3=< -0.2825}->0 (0=18, others=1)
+        [Qualidade=0,0107|Size=2] ||Similarity:0,95||
+   cache(1):{area3=< -0.324393,area2=-0.199161 - 0.295767,concavity1=< -0.245755}->0 (0=16, others=1)
+        [Qualidade=0,0094|Size=3] ||Similarity:0,85||
+   cache(2):{texture3=-0.378974 - 0.589132,area3=< -0.324393,area2=-0.199161 - 0.295767}->0 (0=6, others=1)
+        [Qualidade=0,0028|Size=3] ||Similarity:0,35||
+   cache(3): ||Similarity:0,0351||
+   cache(4): ||Similarity:0,0351||
+
+{area3=< -0.324393,concavity1=0.00779267 - 0.38168}->0 (0=17, others=1)
+        [Qualidade=0,01|Size=2]
+   cache(0):{concavity1=0.00779267 - 0.38168,radius3=< -0.2825}->0 (0=16, others=1)
+        [Qualidade=0,0094|Size=2] ||Similarity:0,9444||
+   cache(1):{concave_points1=-0.570412 - 0.064507,concavity1=0.00779267 - 0.38168}->0 (0=13, others=1)
+        [Qualidade=0,0074|Size=2] ||Similarity:0,28||
+   cache(2):{area3=< -0.324393,concave_points1=-0.570412 - 0.064507,concavity1=0.00779267 - 0.38168}->0 (0=7, others=0)
+        [Qualidade=0,0046|Size=3] ||Similarity:0,3889||
+   cache(3):{area3=< -0.324393,concavity3=≥ 0.451502}->0 (0=13, others=4)
+        [Qualidade=0,0041|Size=2] ||Similarity:0,129||
+   cache(4):{area2=-0.480123 - -0.199161,concavity1=0.00779267 - 0.38168}->0 (0=14, others=7)
+        [Qualidade=0,0014|Size=2] ||Similarity:0,3||
+
+{area3=-0.324393 - 0.00697341,area2=< -0.480123}->0 (0=9, others=1)
+        [Qualidade=0,0048|Size=2]
+   cache(0):{area3=-0.324393 - 0.00697341,area2=< -0.480123,radius3=0.108886 - 0.405014}->0 (0=2, others=0)
+        [Qualidade=0,0013|Size=3] ||Similarity:0,2||
+   cache(1):{area3=-0.324393 - 0.00697341,concavity3=-0.267647 - 0.451502,area2=< -0.480123}->0 (0=1, others=0)
+        [Qualidade=0,0007|Size=3] ||Similarity:0,1||
+   cache(2): ||Similarity:0,0176||
+   cache(3): ||Similarity:0,0176||
+   cache(4): ||Similarity:0,0176||
+
+{area3=< -0.324393,concavity1=≥ 0.38168}->0 (0=9, others=3)
+        [Qualidade=0,0026|Size=2]
+   cache(0):{area3=< -0.324393,concavity3=≥ 0.451502,concavity1=≥ 0.38168}->0 (0=8, others=3)
+        [Qualidade=0,0019|Size=3] ||Similarity:0,9167||
+   cache(1): ||Similarity:0,0211||
+   cache(2): ||Similarity:0,0211||
+   cache(3): ||Similarity:0,0211||
+   cache(4): ||Similarity:0,0211||

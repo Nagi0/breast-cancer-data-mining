@@ -1,5 +1,6 @@
 {
     "cSpell.enabledFileTypes": {
-        "toml": false
+        "toml": false,
+        "xml": false
     }
 }
