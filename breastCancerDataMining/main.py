@@ -23,7 +23,7 @@ if __name__ == "__main__":
     modeling.select_features(features_importance_df.columns[:7])
     modeling.dataset.to_csv("breastCancerDataMining/Models/filtered_dataset.csv", index=False)
     scores = modeling.cross_validation("Decision Tree", p_cv=10)
-    print(scores)
+    print(f"Decision Tree Cross Validation Scores:\n{scores}\n")
 
     trained_model = modeling.train_model("Decision Tree")
     features = modeling.dataset.iloc[:, :-1]
@@ -31,6 +31,8 @@ if __name__ == "__main__":
     # Visualizer().visualize_tree(trained_model, features, labels)
 
     rf_model = modeling.train_model("Random Forest")
+    scores = modeling.cross_validation("Random Forest", p_cv=10)
+    print(f"Random Forest Cross Validation Scores:\n{scores}\n")
     X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=0.25, random_state=42)
 
     predict_fn_rf = lambda x: rf_model.predict_proba(x).astype(float)
