@@ -1,13 +1,13 @@
 import lime.lime_tabular
-import umap
 import numpy as np
 import pandas as pd
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-import dtreeviz
+import umap
 import lime
+import dtreeviz
 import plotly.express as px
 import matplotlib.pyplot as plt
 

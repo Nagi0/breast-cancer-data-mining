@@ -2,5 +2,11 @@
     "cSpell.enabledFileTypes": {
         "toml": false,
         "xml": false
-    }
+    },
+    "cSpell.words": [
+        "pyproject",
+        "SSDP",
+        "venv",
+        "virtualenvs"
+    ]
 }
