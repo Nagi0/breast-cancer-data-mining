@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 import os
+import lime
+import lime.lime_tabular
 import pandas as pd
 from tqdm import tqdm
 from dotenv import load_dotenv
@@ -111,7 +113,7 @@ if __name__ == "__main__":
     features_importance_df = modeling.get_features_importances("SVM", 100)
 
     modeling.select_features(features_importance_df.columns[:7])
-    modeling.dataset.to_csv("filtered_dataset.csv", index=False)
+    modeling.dataset.to_csv("breastCancerDataMining/Models/filtered_dataset.csv", index=False)
     scores = modeling.cross_validation("Decision Tree", p_cv=10)
     print(scores)
 
@@ -119,3 +121,19 @@ if __name__ == "__main__":
     features = modeling.dataset.iloc[:, :-1]
     labels = modeling.dataset.iloc[:, -1]
     # Visualizer().visualize_tree(trained_model, features, labels)
+
+    rf_model = modeling.train_model("Random Forest")
+    X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=0.25, random_state=42)
+
+    predict_fn_rf = lambda x: rf_model.predict_proba(x).astype(float)
+    explainer = lime.lime_tabular.LimeTabularExplainer(
+        X_train.values, feature_names=X_train.columns, class_names=["B", "M"]
+    )
+
+    for idx, sample in enumerate(X_test.values):
+        sample = pd.DataFrame(sample.reshape((1, -1)), columns=X_test.columns)
+        y_hat = rf_model.predict(sample)[0]
+        if y_hat == y_test.values[idx]:
+            Visualizer().visualize_rf_predict(explainer, sample, predict_fn_rf, y_hat, idx)
+            # exp = explainer.explain_instance(sample.values[0], predict_fn_rf, num_features=7)
+            # exp.save_to_file(f"breastCancerDataMining/Models/limeResults/lime_{y_hat}_{idx}.html")

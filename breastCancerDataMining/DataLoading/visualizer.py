@@ -1,3 +1,4 @@
+import lime.lime_tabular
 import umap
 import numpy as np
 import pandas as pd
@@ -6,6 +7,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import dtreeviz
+import lime
 import plotly.express as px
 import matplotlib.pyplot as plt
 
@@ -65,3 +67,14 @@ class Visualizer:
 
         v = viz_model.view(fontname="monospace")
         v.save("breastCancerDataMining/Models/tree.svg")
+
+    def visualize_rf_predict(
+        self,
+        p_explainer: lime.lime_tabular.LimeTabularExplainer,
+        p_sample: pd.DataFrame,
+        p_predict_fn_rf,
+        y_hat: int,
+        idx: int,
+    ):
+        exp = p_explainer.explain_instance(p_sample.values[0], p_predict_fn_rf, num_features=7)
+        exp.save_to_file(f"breastCancerDataMining/Models/limeResults/lime_{y_hat}_{idx}.html")
