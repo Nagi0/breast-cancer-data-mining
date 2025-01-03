@@ -28,7 +28,7 @@ if __name__ == "__main__":
     trained_model = modeling.train_model("Decision Tree")
     features = modeling.dataset.iloc[:, :-1]
     labels = modeling.dataset.iloc[:, -1]
-    Visualizer().visualize_tree(trained_model, features, labels)
+    # Visualizer().visualize_tree(trained_model, features, labels)
 
     rf_model = modeling.train_model("Random Forest")
     X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=0.25, random_state=42)
