@@ -120,7 +120,7 @@ if __name__ == "__main__":
     trained_model = modeling.train_model("Decision Tree")
     features = modeling.dataset.iloc[:, :-1]
     labels = modeling.dataset.iloc[:, -1]
-    # Visualizer().visualize_tree(trained_model, features, labels)
+    Visualizer().visualize_tree(trained_model, features, labels)
 
     rf_model = modeling.train_model("Random Forest")
     X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=0.25, random_state=42)
@@ -135,5 +135,3 @@ if __name__ == "__main__":
         y_hat = rf_model.predict(sample)[0]
         if y_hat == y_test.values[idx]:
             Visualizer().visualize_rf_predict(explainer, sample, predict_fn_rf, y_hat, idx)
-            # exp = explainer.explain_instance(sample.values[0], predict_fn_rf, num_features=7)
-            # exp.save_to_file(f"breastCancerDataMining/Models/limeResults/lime_{y_hat}_{idx}.html")
