@@ -51,6 +51,7 @@ class Visualizer:
         imp, names = zip(*sorted(zip(imp, p_importances_df.columns)))
 
         plt.figure()
+        plt.title("K-Fold Permutation Feature Importance")
         plt.barh(range(len(names)), imp, align="center")
         plt.yticks(range(len(names)), names)
         plt.show()

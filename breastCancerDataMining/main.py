@@ -3,7 +3,10 @@ import lime
 import lime.lime_tabular
 import pandas as pd
 from dotenv import load_dotenv
+from scipy.stats import f_oneway
+from scipy.stats import ttest_ind, mannwhitneyu
 from sklearn.model_selection import train_test_split
+from statsmodels.multivariate.manova import MANOVA
 from breastCancerDataMining.Models.models import Models
 from breastCancerDataMining.DataLoading.data_loader import DataLoader
 from breastCancerDataMining.DataLoading.visualizer import Visualizer
@@ -45,3 +48,85 @@ if __name__ == "__main__":
         y_hat = rf_model.predict(sample)[0]
         if y_hat == y_test.values[idx]:
             Visualizer().visualize_rf_predict(explainer, sample, predict_fn_rf, y_hat, idx)
+
+    subgroups = {
+        "area3 = < -0.324393": {"data": dataset.loc[dataset["area3"] < -0.324393], "attributes": ["area3"]},
+        "texture3 = < -0.378974, radius3 = -0.2825 - 0.108886": {
+            "data": dataset.loc[
+                (dataset["texture3"] < -0.378974) & (dataset["radius3"] >= -0.2825) & (dataset["radius3"] <= 0.108886)
+            ],
+            "attributes": ["texture3", "radius3"],
+        },
+        "concavity3 = -0.267647 - 0.451502, area2 = < -0.480123": {
+            "data": dataset.loc[
+                (dataset["concavity3"] >= -0.267647)
+                & (dataset["concavity3"] <= 0.451502)
+                & (dataset["area2"] < -0.480123)
+            ],
+            "attributes": ["concavity3", "area2"],
+        },
+        "texture3 = ≥ 0.589132, concavity3 = < -0.267647": {
+            "data": dataset.loc[(dataset["texture3"] >= 0.589132) & (dataset["concavity3"] < -0.267647)],
+            "attributes": ["texture3", "concavity3"],
+        },
+        "area3 = < -0.324393, area2 = -0.199161 - 0.295767": {
+            "data": dataset.loc[
+                (dataset["area3"] < -0.324393) & (dataset["area2"] >= -0.199161) & (dataset["area2"] <= 0.295767)
+            ],
+            "attributes": ["area3", "area2"],
+        },
+        "area3 = < -0.324393, concavity1 = 0.00779267 - 0.38168": {
+            "data": dataset.loc[
+                (dataset["area3"] < -0.324393)
+                & (dataset["concavity1"] >= 0.00779267)
+                & (dataset["concavity1"] <= 0.38168)
+            ],
+            "attributes": ["area3", "concavity1"],
+        },
+        "area3 = -0.324393 - 0.00697341, area2 = < -0.480123": {
+            "data": dataset.loc[
+                (dataset["area3"] >= -0.324393) & (dataset["area3"] <= 0.00697341) & (dataset["area2"] < -0.480123)
+            ],
+            "attributes": ["area3", "area2"],
+        },
+        "area3 = < -0.324393, concavity1 = ≥ 0.38168": {
+            "data": dataset.loc[(dataset["area3"] < -0.324393) & (dataset["concavity1"] >= 0.38168)],
+            "attributes": ["area3", "concavity1"],
+        },
+    }
+    for name in subgroups.keys():
+        # print(
+        #     f"{name}:\n{subgroups[name]['data']}{dataset.iloc[~dataset.index.isin(subgroups[name]['data'].index)]}\n"
+        # )
+        sb_attributes = subgroups[name]["attributes"]
+        subgroup_df = subgroups[name]["data"][sb_attributes]
+        subgroup_df = subgroup_df.assign(group="subgroup")
+        subgroup_complement_df = dataset.iloc[~dataset.index.isin(subgroups[name]["data"].index)][sb_attributes]
+        subgroup_complement_df = subgroup_complement_df.assign(group="complement")
+
+        combined_df = pd.concat([subgroup_df, subgroup_complement_df])
+
+        formula = ""
+        for idx, attrib in enumerate(sb_attributes):
+            if idx > 0:
+                formula = f"{formula} + {attrib}"
+            else:
+                formula = f"{attrib}"
+
+        formula = f"{formula} ~ group"
+        print(formula)
+
+        if len(sb_attributes) > 1:
+            manova = MANOVA.from_formula(formula=formula, data=combined_df)
+            print(manova.mv_test())
+        else:
+            stat, p_value = ttest_ind(
+                subgroup_df[sb_attributes], subgroup_complement_df[sb_attributes], equal_var=False
+            )
+            print(f"stats: {stat}\np-value: {p_value}\n")
+
+            stat_mwu, p_value_mwu = mannwhitneyu(subgroup_df[sb_attributes], subgroup_complement_df[sb_attributes])
+            print(f"stats_mwu: {stat}\np_value_mwu: {p_value_mwu}\n")
+
+            f_result = f_oneway(subgroup_df[sb_attributes], subgroup_complement_df[sb_attributes])
+            print(f_result)
