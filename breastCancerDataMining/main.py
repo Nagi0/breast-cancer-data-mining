@@ -19,7 +19,7 @@ if __name__ == "__main__":
     dataset = data_loader.load_dataset()
     dataset = data_loader.standard_normalize_data(dataset)
 
-    metrics_dict = {"Accuracy": "accuracy", "F1-Score": "f1", "Jaccard": "jaccard"}
+    metrics_dict = {"Accuracy": "accuracy", "F1-Score": "f1", "Jaccard": "jaccard", "ROC AUC": "roc_auc"}
     modeling = Models(dataset, metrics_dict)
     features_importance_df = modeling.get_features_importances("SVM", 100)
 
